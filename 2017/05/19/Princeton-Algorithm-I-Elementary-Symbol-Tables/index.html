@@ -69,7 +69,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithm princeton open_course Table," />
+  <meta name="keywords" content="algorithm,princeton,open_course,table," />
 
 
 
@@ -85,18 +85,18 @@
 
 
 
-<meta name="description" content="##1. API-What is the meaning of symbol tables?-Associate values to each key. To be more specific, to implements Key-Value pair abstraction. Key-Value pair abstraction  Insert a value with specified ke">
-<meta name="keywords" content="algorithm princeton open_course Table">
+<meta name="description" content="1. API-What is the meaning of symbol tables?-Associate values to each key. To be more specific, to implements Key-Value pair abstraction. Key-Value pair abstraction  Insert a value with specified key">
+<meta name="keywords" content="algorithm,princeton,open_course,table">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Princeton Algorithm I: Elementary Symbol Tables">
 <meta property="og:url" content="http://yoursite.com/2017/05/19/Princeton-Algorithm-I-Elementary-Symbol-Tables/index.html">
 <meta property="og:site_name" content="CN_Coder">
-<meta property="og:description" content="##1. API-What is the meaning of symbol tables?-Associate values to each key. To be more specific, to implements Key-Value pair abstraction. Key-Value pair abstraction  Insert a value with specified ke">
+<meta property="og:description" content="1. API-What is the meaning of symbol tables?-Associate values to each key. To be more specific, to implements Key-Value pair abstraction. Key-Value pair abstraction  Insert a value with specified key">
 <meta property="og:image" content="https://farm5.staticflickr.com/4173/33925360443_0ac85b18b4_h.jpg">
-<meta property="og:updated_time" content="2017-05-18T16:38:13.000Z">
+<meta property="og:updated_time" content="2017-05-18T16:41:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Princeton Algorithm I: Elementary Symbol Tables">
-<meta name="twitter:description" content="##1. API-What is the meaning of symbol tables?-Associate values to each key. To be more specific, to implements Key-Value pair abstraction. Key-Value pair abstraction  Insert a value with specified ke">
+<meta name="twitter:description" content="1. API-What is the meaning of symbol tables?-Associate values to each key. To be more specific, to implements Key-Value pair abstraction. Key-Value pair abstraction  Insert a value with specified key">
 <meta name="twitter:image" content="https://farm5.staticflickr.com/4173/33925360443_0ac85b18b4_h.jpg">
 
 
@@ -390,7 +390,7 @@
       
 
       
-        <p>##1. API<br>-What is the meaning of symbol tables?<br>-Associate values to each key. To be more specific, to implements Key-Value pair abstraction.</p>
+        <h2 id="1-API"><a href="#1-API" class="headerlink" title="1. API"></a>1. API</h2><p>-What is the meaning of symbol tables?<br>-Associate values to each key. To be more specific, to implements Key-Value pair abstraction.</p>
 <p><strong>Key-Value pair abstraction</strong></p>
 <ul>
 <li>Insert a value with specified key</li>
@@ -423,16 +423,14 @@
 <li>if field is an array, apply to each entry (or <strong>Arrays.equals(a,b)</strong> but <strong>not a.equals(b)</strong>) </li>
 </ul>
 <p>Ex. Input a file, contains many words, output the word with max freqency<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FrequencyCounter</span></span></div><div class="line">&#123;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">int</span> minlen = Integer.parseInt(args[<span class="number">0</span>]);</div><div class="line">ST&lt;String, Integer&gt; st = <span class="keyword">new</span> ST&lt;String,Integer&gt;();</div><div class="line"><span class="keyword">while</span> (!StdIn.isEmpty())</div><div class="line">&#123;                                  <span class="comment">//read the string and update freqency</span></div><div class="line">String word = StdIn.readString();</div><div class="line"><span class="keyword">if</span> (word.length() &lt; minlen) <span class="keyword">continue</span>;         <span class="comment">//ignore short strings</span></div><div class="line"><span class="keyword">if</span> (!st.contains(word)) st.put(word, <span class="number">1</span>);</div><div class="line"><span class="keyword">else</span> st.put(word, st.get(word) + <span class="number">1</span>);</div><div class="line">&#125;</div><div class="line">String max = <span class="string">""</span>;</div><div class="line">st.put(max, <span class="number">0</span>);</div><div class="line"><span class="keyword">for</span> (String word : st.keys())</div><div class="line"><span class="keyword">if</span> (st.get(word) &gt; st.get(max))</div><div class="line">max = word;</div><div class="line">StdOut.println(max + <span class="string">" "</span> + st.get(max));  <span class="comment">//Print the string with max freq</span></div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>##2. Elementary ST implementation</p>
-<p>###2.1 Sequential search in a linked list<br><strong>Data structure</strong><br>Maintain an (unordered) linked list of key-value pairs.<br><strong>Search</strong><br>Scan through all keys until find a match.<br><strong>Insert</strong><br>Scan through all keys until find a match; if no match add to front.</p>
-<p>###2.2 Binary Search in an ordered array<br><strong>Data structure</strong><br>Maintain an ordered array of key-value pairs.<br><strong>Search</strong><br>Binary Search<br><strong>Insert</strong><br>Need to shift all greater keys over.</p>
+<h2 id="2-Elementary-ST-implementation"><a href="#2-Elementary-ST-implementation" class="headerlink" title="2. Elementary ST implementation"></a>2. Elementary ST implementation</h2><h3 id="2-1-Sequential-search-in-a-linked-list"><a href="#2-1-Sequential-search-in-a-linked-list" class="headerlink" title="2.1 Sequential search in a linked list"></a>2.1 Sequential search in a linked list</h3><p><strong>Data structure</strong><br>Maintain an (unordered) linked list of key-value pairs.<br><strong>Search</strong><br>Scan through all keys until find a match.<br><strong>Insert</strong><br>Scan through all keys until find a match; if no match add to front.</p>
+<h3 id="2-2-Binary-Search-in-an-ordered-array"><a href="#2-2-Binary-Search-in-an-ordered-array" class="headerlink" title="2.2 Binary Search in an ordered array"></a>2.2 Binary Search in an ordered array</h3><p><strong>Data structure</strong><br>Maintain an ordered array of key-value pairs.<br><strong>Search</strong><br>Binary Search<br><strong>Insert</strong><br>Need to shift all greater keys over.</p>
 <p>Important function for binary search: How many keys &lt; k ?</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Value <span class="title">get</span><span class="params">(Key key)</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">if</span> (isEmpty()) <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line"><span class="keyword">int</span> i = rank(key);</div><div class="line"><span class="keyword">if</span> (i &lt; N &amp;&amp; keys[i].compareTo(key) == <span class="number">0</span>) <span class="keyword">return</span> vals[i];</div><div class="line"><span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//return the number of keys &lt; k</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">rank</span><span class="params">(Key key)</span></span></div><div class="line">&#123;                                             </div><div class="line"><span class="keyword">int</span> lo = <span class="number">0</span>, hi = N-<span class="number">1</span>;</div><div class="line"><span class="keyword">while</span> (lo &lt;= hi)                          <span class="comment">//Binary search</span></div><div class="line">&#123;</div><div class="line"><span class="keyword">int</span> mid = lo + (hi - lo) / <span class="number">2</span>;</div><div class="line"><span class="keyword">int</span> cmp = key.compareTo(keys[mid]);</div><div class="line"><span class="keyword">if</span>      (cmp  &lt; <span class="number">0</span>) hi = mid - <span class="number">1</span>;      </div><div class="line"><span class="keyword">else</span> <span class="keyword">if</span> (cmp  &gt; <span class="number">0</span>) lo = mid + <span class="number">1</span>;</div><div class="line"><span class="keyword">else</span> <span class="keyword">if</span> (cmp == <span class="number">0</span>) <span class="keyword">return</span> mid;</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span> lo; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>The <strong>Summary</strong> of two ways is listed</p>
 <p><img src="https://farm5.staticflickr.com/4173/33925360443_0ac85b18b4_h.jpg" alt="summary"></p>
 <p>Obveresly, these two ways are not efficient enough, some optimization is still needed.</p>
-<p>##3. Ordered Operation</p>
-<p>Normally, Ordered symbol table should has the following API</p>
+<h2 id="3-Ordered-Operation"><a href="#3-Ordered-Operation" class="headerlink" title="3. Ordered Operation"></a>3. Ordered Operation</h2><p>Normally, Ordered symbol table should has the following API</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ST</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt;, <span class="title">Value</span>&gt;</span></div><div class="line">&#123;</div><div class="line">ST();                               <span class="comment">// create an ordered symbol table</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(Key key, Value val)</span></span>;       <span class="comment">//put key-value pair into the table (remove key from table if value is null)</span></div><div class="line"><span class="function">Value <span class="title">get</span><span class="params">(Key key)</span></span>;                 <span class="comment">//value paired with key (null if key is absent)</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(Key key)</span></span>;               <span class="comment">//remove key (and its value) from table</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Key key)</span></span>;          <span class="comment">//is there a value paired with key?</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>;                  <span class="comment">//is the table empty?</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;                         <span class="comment">//number of key-value pairs</span></div><div class="line"><span class="function">Key <span class="title">min</span><span class="params">()</span></span>;                          <span class="comment">//smallest key</span></div><div class="line"><span class="function">Key <span class="title">max</span><span class="params">()</span></span>;                          <span class="comment">//largest key</span></div><div class="line"><span class="function">Key <span class="title">floor</span><span class="params">(Key key)</span></span>;                 <span class="comment">//largest key less than or equal to key </span></div><div class="line"><span class="function">Key <span class="title">ceiling</span><span class="params">(Key key)</span></span>;               <span class="comment">//smallest key greater than or equal to key </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">rank</span><span class="params">(Key key)</span></span>;                  <span class="comment">//number of keys less than key</span></div><div class="line"><span class="function">Key <span class="title">select</span><span class="params">(<span class="keyword">int</span> k)</span></span>;                  <span class="comment">//key of rank k</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteMin</span><span class="params">()</span></span>;                   <span class="comment">//delete smallest key</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">deleteMax</span><span class="params">()</span></span>;                   <span class="comment">//delete largest key</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">(Key lo, Key hi)</span></span>;           <span class="comment">//number of keys in [lo..hi]</span></div><div class="line"><span class="function">Iterable&lt;Key&gt; <span class="title">keys</span><span class="params">(Key lo, Key hi)</span></span>; <span class="comment">//keys in [lo..hi], in sorted order</span></div><div class="line"><span class="function">Iterable&lt;Key&gt; <span class="title">keys</span><span class="params">()</span></span>;               <span class="comment">//all keys in the table, in sorted order</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
@@ -463,7 +461,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/algorithm-princeton-open-course-Table/" rel="tag"># algorithm princeton open_course Table</a>
+            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          
+            <a href="/tags/princeton/" rel="tag"># princeton</a>
+          
+            <a href="/tags/open-course/" rel="tag"># open_course</a>
+          
+            <a href="/tags/table/" rel="tag"># table</a>
           
         </div>
       
@@ -576,8 +580,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -605,7 +618,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -641,6 +654,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-API"><span class="nav-number">1.</span> <span class="nav-text">1. API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Elementary-ST-implementation"><span class="nav-number">2.</span> <span class="nav-text">2. Elementary ST implementation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Sequential-search-in-a-linked-list"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Sequential search in a linked list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Binary-Search-in-an-ordered-array"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Binary Search in an ordered array</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Ordered-Operation"><span class="nav-number">3.</span> <span class="nav-text">3. Ordered Operation</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
