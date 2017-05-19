@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    
+    <lastmod>2017-05-19T16:57:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/05/15/New-Blog-New-Life/</loc>
+    
+    <lastmod>2017-05-19T16:51:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/05/19/Princeton-Algorithm-I-Elementary-Symbol-Tables/</loc>
     
-    <lastmod>2017-05-18T17:04:56.000Z</lastmod>
+    <lastmod>2017-05-19T16:51:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/05/20/Angular-2-and-NodeJS-the-practical-guide-Introduction/</loc>
+    
+    <lastmod>2017-05-19T16:50:43.000Z</lastmod>
     
   </url>
   
@@ -12,13 +33,6 @@
     <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2017-05-18T16:54:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/05/15/New-Blog-New-Life/</loc>
-    
-    <lastmod>2017-05-16T01:42:00.000Z</lastmod>
     
   </url>
   
