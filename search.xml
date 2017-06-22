@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Convert Sorted List to Binary Search Tree]]></title>
+    <url>%2F2017%2F06%2F22%2FConvert-Sorted-List-to-Binary-Search-Tree%2F</url>
+    <content type="text"><![CDATA[109. Convert Sorted List to Binary Search TreeGiven a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST. This is a classical algorithm problem. But it requires deep understanding of binary search, tree traversal and linked list. The output of BST in-order traversal is an ascending-order array. So the template of in-order traversal can help to build this BST. The basic codes of in-order rebuilding of balanced BST is123456789101112private TreeNode inOrder (int begin, int end)&#123; if (begin &gt; end) return null; TreeNode node； int mid = begin + (end - begin) / 2; TreeNode left = inOrder(begin, mid - 1); TreeNode node = new TreeNode(nums[mid]); node.left = left; TreeNode right = inOrder(mid + 1, end); node.right = right; return node;&#125; It is easy to deal with with a sorted array. But in this problem, it is rebulit from linked list. There are several ways to deal with it. These solutions are similar: find a way to realize some features of arrays to linked list, then use the classical way which rebuild a BST from array, to rebuild it from linked list. 1. Find the middle value from beginning every timeIt is the simplest way, but not efficient.Use 2 pointers to find the middle value. One is faster, which moves 2 steps every time; one is slower, moves 1 step every time. When the faster pointer reaches the end, the slower one just reach the middle of the linked list. 12345678910111213141516171819202122232425public class Solution &#123; public TreeNode sortedListToBST(ListNode head) &#123; if(head == null) return null; return toBST(head,null); &#125; public TreeNode toBST(ListNode head, ListNode tail) &#123; ListNode slow = head; ListNode fast = head; if(head==tail) return null; while(fast!=tail&amp;&amp;fast.next!=tail) &#123; fast = fast.next.next; slow = slow.next; &#125; //slow is the middle node of linked list TreeNode node = new TreeNode(slow.val); node.left = toBST(head,slow); node.right = toBST(slow.next,tail); return node; &#125;&#125; 2. Using in-order traversal template, binary search likeUse a global variable node to store the visiting postion of linked list. 1234567891011121314151617181920212223242526272829303132333435public class Solution&#123; private ListNode node; public TreeNode sortedListToBST(ListNode head) &#123; if(head == null) return null; int size = 0; ListNode runner = head; node = head; //size finds the total number of nodes of linked list while(runner != null) &#123; runner = runner.next; size ++; &#125; return inorderHelper(0, size - 1); &#125; public TreeNode inorderHelper(int start, int end) &#123; if(start &gt; end) return null; int mid = start + (end - start) / 2; TreeNode left = inorderHelper(start, mid - 1); TreeNode treenode = new TreeNode(node.val); treenode.left = left; node = node.next; TreeNode right = inorderHelper(mid + 1, end); treenode.right = right; return treenode; &#125;&#125; 2. Using in-order traversal template, simplerUpper two ways in reality using the feature of BST, which likes binary search. These two ways’ code looks similar to binary search template. There is another way using the template. 123456789101112131415161718192021222324252627public class Solution &#123; ListNode listNode; private TreeNode treeBuilder(int n) &#123; if (n == 0) return null; TreeNode treeNode = new TreeNode(0); treeNode.left = treeBuilder(n / 2); treeNode.val = listNode.val; listNode = listNode.next; treeNode.right = treeBuilder(n - n / 2 - 1); return treeNode; &#125; public TreeNode sortedListToBST(ListNode head) &#123; if (head == null) return null; int size = 1; ListNode curr = head; while (curr.next != null) &#123; size++; curr = curr.next; &#125; listNode = head; return treeBuilder(size); &#125;&#125;]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>algorithm</tag>
+        <tag>leetcode</tag>
+        <tag>tree</tag>
+        <tag>binary search</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Trie]]></title>
     <url>%2F2017%2F06%2F06%2FTrie%2F</url>
     <content type="text"><![CDATA[In computer science, a trie, also called digital tree and sometimes radix tree or prefix tree, is a kind of search tree—an ordered tree data structure that is used to store a dynamic set or associative array where the keys are usually strings. Basic features: Root does not contains characters, other nodes only contain one character. From root to node, catenate all the characters one by one in the path, the string is the value of the node. The node may not have value. Every node has different node. Advantages: Looking up data in a trie is faster in the worst case, O(m) time (where m is the length of a search string), compared to an imperfect hash table. There are no collisions of different keys in a trie. A trie can provide an alphabetical ordering of the entries by key. Drawbacks: Tries can be slower in some cases than hash tables for looking up data, especially if the data is directly accessed on a hard disk drive or some other secondary storage device where the random-access time is high compared to main memory. Some keys, such as floating point numbers, can lead to long chains and prefixes that are not particularly meaningful. Some tries can require more space than a hash table, as memory may be allocated for each character in the search string, rather than a single chunk of memory for the whole entry, as in most hash tables. Insert OperationFrom the root, track the tree by characters in the word until the tail of the word. Build new nodes if necessary. Update the value of node which contains the last character of the word. (in the chart below, the nodes which contains value are painted red) Find OperationSame as insert operation, track the tree by characters in the word until the tail of the word. If the tail cannot be reached or there is no value of on the last node, return false There is a problem on LeetCode solved by trie: 211. Add and Search Word - Data structure design Design a data structure that supports the following two operations:void addWord(word)bool search(word)search(word) can search a literal word or a regular expression string containing only letters a-z or .. A . means it can represent any one letter. Acutally, if you are familiar with trie. It is so easy and no need to explain the solution. Here is my solution.123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051public class WordDictionary &#123; private class trieNode &#123; public trieNode[] children = new trieNode[26]; public String item = ""; &#125; private trieNode root; /** Initialize your data structure here. */ public WordDictionary() &#123; root = new trieNode(); &#125; /** Adds a word into the data structure. */ public void addWord(String word) &#123; trieNode node = root; for (char c : word.toCharArray()) &#123; if (node.children[c - 'a'] == null) node.children[c - 'a'] = new trieNode(); node = node.children[c - 'a']; &#125; node.item = word; &#125; /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */ public boolean search(String word) &#123; return match(word.toCharArray(), 0, root); &#125; private boolean match(char[] word, int k, trieNode node) &#123; if (k == word.length) return !node.item.equals(""); if (word[k] != '.') &#123; return node.children[word[k] - 'a'] != null &amp;&amp; match(word, k + 1, node.children[word[k] - 'a']); &#125; else &#123; for (int i = 0; i &lt; node.children.length; i++) if (node.children[i] != null &amp;&amp; match(word, k + 1, node.children[i])) return true; &#125; return false; &#125;&#125;/** * Your WordDictionary object will be instantiated and called as such: * WordDictionary obj = new WordDictionary(); * obj.addWord(word); * boolean param_2 = obj.search(word); */]]></content>
@@ -8,8 +22,8 @@
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>algorithm</tag>
+        <tag>leetcode</tag>
         <tag>tree</tag>
       </tags>
   </entry>
@@ -21,8 +35,8 @@
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>algorithm</tag>
+        <tag>leetcode</tag>
         <tag>sort</tag>
       </tags>
   </entry>
@@ -34,8 +48,8 @@
         <category>Algorithm</category>
       </categories>
       <tags>
-        <tag>leetcode</tag>
         <tag>algorithm</tag>
+        <tag>leetcode</tag>
         <tag>sort</tag>
       </tags>
   </entry>
