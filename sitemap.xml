@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://cncoder.pub/about/index.html</loc>
+    
+    <lastmod>2017-07-22T17:30:49.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://cncoder.pub/2017/07/23/simulation-algorithms-string-manipulation-skills/</loc>
     
     <lastmod>2017-07-22T16:11:47.000Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>http://cncoder.pub/tags/index.html</loc>
     
     <lastmod>2017-05-18T16:54:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://cncoder.pub/about/index.html</loc>
-    
-    <lastmod>2017-05-15T17:52:38.000Z</lastmod>
     
   </url>
   
