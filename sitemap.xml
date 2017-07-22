@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://cncoder.pub/2017/07/23/simulation-algorithms-string-manipulation-skills/</loc>
+    
+    <lastmod>2017-07-22T16:11:47.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://cncoder.pub/2017/06/22/Convert-Sorted-List-to-Binary-Search-Tree/</loc>
     
     <lastmod>2017-06-22T14:06:06.000Z</lastmod>

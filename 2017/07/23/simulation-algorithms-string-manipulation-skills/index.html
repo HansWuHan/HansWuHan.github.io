@@ -1,0 +1,1476 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="dlWVJMO5yG7ECkN9oseIUo7lWoXjMlzqwT7u9kqrvUA" />
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="ytVc7opvAj" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="algorithm,leetcode,simulation,string," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="1. Sliding Window Average from Data Stream Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window. Input exampleMovingAverage m = new MovingAv">
+<meta name="keywords" content="algorithm,leetcode,simulation,string">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Simulation Algorithms &amp;&amp; String Manipulation Skills">
+<meta property="og:url" content="http://cncoder.pub/2017/07/23/simulation-algorithms-string-manipulation-skills/index.html">
+<meta property="og:site_name" content="CN_Coder">
+<meta property="og:description" content="1. Sliding Window Average from Data Stream Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window. Input exampleMovingAverage m = new MovingAv">
+<meta property="og:updated_time" content="2017-07-22T16:11:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Simulation Algorithms &amp;&amp; String Manipulation Skills">
+<meta name="twitter:description" content="1. Sliding Window Average from Data Stream Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window. Input exampleMovingAverage m = new MovingAv">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://cncoder.pub/2017/07/23/simulation-algorithms-string-manipulation-skills/"/>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <title>Simulation Algorithms && String Manipulation Skills | CN_Coder</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99213361-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CN_Coder</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://cncoder.pub/2017/07/23/simulation-algorithms-string-manipulation-skills/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hans Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CN_Coder">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Simulation Algorithms && String Manipulation Skills</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-23T00:08:51+08:00">
+                2017-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/23/simulation-algorithms-string-manipulation-skills/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/07/23/simulation-algorithms-string-manipulation-skills/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/07/23/simulation-algorithms-string-manipulation-skills/" class="leancloud_visitors" data-flag-title="Simulation Algorithms && String Manipulation Skills">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-Sliding-Window-Average-from-Data-Stream"><a href="#1-Sliding-Window-Average-from-Data-Stream" class="headerlink" title="1. Sliding Window Average from Data Stream"></a>1. Sliding Window Average from Data Stream</h2><blockquote>
+<p>Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.</p>
+<p><strong>Input example</strong><br>MovingAverage m = new MovingAverage(3);<br>m.next(1) = 1 // return 1.00000<br>m.next(10) = (1 + 10) / 2 // return 5.50000<br>m.next(3) = (1 + 10 + 3) / 3 // return 4.66667<br>m.next(5) = (10 + 3 + 5) / 3 // return 6.00000</p>
+<p><strong>Similar Questions</strong><br>LintCode 642, LeetCode 346</p>
+</blockquote>
+<h3 id="Solution-1-Prefix-Sum-I"><a href="#Solution-1-Prefix-Sum-I" class="headerlink" title="Solution 1. Prefix Sum I"></a>Solution 1. Prefix Sum I</h3><p>As the following chart shows, <code>a</code> is an array, and <code>s</code> is <code>a</code>‘s Prefix Sum array. s[i] = a[1] + a[2] + a[3] …. + a[i]</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">index</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>a</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">-4</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>s</strong></td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">18</td>
+<td style="text-align:center">19</td>
+<td style="text-align:center">15</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">20</td>
+</tr>
+</tbody>
+</table>
+<p>With prefix sum, it is easy to find the sum of any consecutive elements. <code>a[k] + a[k + 1] +... + a[j] = s[j] - s[k -1]</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovingAverage</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Initialize your data structure here.</div><div class="line">     */</div><div class="line">    <span class="keyword">double</span>[] sum;</div><div class="line">    <span class="keyword">int</span> id, size;</div><div class="line"></div><div class="line">    MovingAverage(<span class="keyword">int</span> size) &#123;</div><div class="line">        sum = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">1000000</span>];   <span class="comment">//this is not final version</span></div><div class="line">        id = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.size = size;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">next</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        id++;</div><div class="line">        sum[id] = sum[id - <span class="number">1</span>] + val;</div><div class="line">        <span class="keyword">if</span> (id - size &gt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> (sum[id] - sum[id - size]) / size;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> sum[id] / id;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The time complexity is O(1), but space complexity is O(n).</p>
+<p>As the quantity of data is <strong>unknown</strong>, this solution is not workable.</p>
+<h3 id="Solution-2-Prefix-Sum-II-Rolling-Array"><a href="#Solution-2-Prefix-Sum-II-Rolling-Array" class="headerlink" title="Solution 2. Prefix Sum II : Rolling Array"></a>Solution 2. Prefix Sum II : Rolling Array</h3><p>In this problem, if the prefix sum has been recorded, the data before the sliding window is useless. This enlight me to improve the array as rolling array.<br>Use <code>size == 3</code> as example,<br>|<strong>Original Location</strong>|0|1|2|3|4|5|6|7|<br>|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|<br>|<strong>Rolling Location</strong>|0|1|2|3|0|1|2|3|<br>When the window moves to <code>4</code>, the result is <code>s[4] - s[1]</code>. At this time, <code>s[0]</code> will never be used, so <code>s[4]</code> can be saved at <code>s[0]</code>.</p>
+<blockquote>
+<p>Rolling Location == Original Location <strong>mod</strong> (size + 1)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovingAverage</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Initialize your data structure here.</div><div class="line">     */</div><div class="line">    <span class="keyword">double</span>[] sum;</div><div class="line">    <span class="keyword">int</span> id, size;</div><div class="line"></div><div class="line">    MovingAverage(<span class="keyword">int</span> size) &#123;</div><div class="line">        sum = <span class="keyword">new</span> <span class="keyword">double</span>[size + <span class="number">1</span>];</div><div class="line">        id = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.size = size;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">mod</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> x % (size + <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">next</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        id++;</div><div class="line">        sum[mod(id)] = sum[mod(id - <span class="number">1</span>)] + val;</div><div class="line">        <span class="keyword">if</span> (id - size &gt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> (sum[mod(id)] - sum[mod(id - size)]) / size;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> sum[mod(id)] / id;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The time complexity is O(1), and space complexity is O(size + 1).</p>
+<h3 id="Solution-3-Queue-Linkedlist"><a href="#Solution-3-Queue-Linkedlist" class="headerlink" title="Solution 3. Queue / Linkedlist"></a>Solution 3. Queue / Linkedlist</h3><p>With no doubt, data stream is like a queue, build a queue is a straightforward and easy way to solve this problem.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MovingAverage</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Queue&lt;Integer&gt; que;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">double</span> sum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</div><div class="line"></div><div class="line">    <span class="comment">/** Initialize your data structure here. */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MovingAverage</span><span class="params">(<span class="keyword">int</span> size)</span> </span>&#123;</div><div class="line">        que = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</div><div class="line">        <span class="keyword">this</span>.size = size;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">next</span><span class="params">(<span class="keyword">int</span> val)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        sum += val;</div><div class="line">        <span class="keyword">if</span> (que.size() == size) &#123;</div><div class="line">            sum = sum - que.poll();</div><div class="line">        &#125;</div><div class="line">        que.offer(val);</div><div class="line">        <span class="keyword">return</span> sum / que.size();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-Edit-Distance-II"><a href="#2-Edit-Distance-II" class="headerlink" title="2. Edit Distance II"></a>2. Edit Distance II</h2><blockquote>
+<p>Given two strings S and T, determine if they are both one edit distance apart.<br><strong>Example(s)</strong><br>Given s = “aDb”, t = “adb”<br>return true<br><strong>Similar Problems</strong><br>LintCode 640, LeetCode 161</p>
+</blockquote>
+<p><strong>What is one edit distance?</strong><br>if with only one-character edition(<code>insertion</code>, <code>deletion</code> or  <code>substitution</code>), the string <code>s</code> equals the string <code>t</code>, then <code>s</code> and <code>t</code> are with one edit distance.</p>
+<p>From the definition above, the solution is obvious.</p>
+<p>There are 3 kinds of editions, so it can be solved by classification.</p>
+<p><strong>1. s.length() == t.length()</strong>,  substitution<br><strong>2. s.length() == t.length + 1</strong>, deletion<br><strong>3. s.length() == t.length - 1</strong>, insertion</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">   <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> s a string</div><div class="line">     * <span class="doctag">@param</span> t a string</div><div class="line">     * <span class="doctag">@return</span> true if they are both one edit distance apart or false</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isOneEditDistance</span><span class="params">(String s, String t)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        <span class="keyword">if</span> (s.length() &gt; t.length()) &#123;</div><div class="line">            <span class="keyword">return</span> isOneEditDistance(t, s);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> diff = t.length() - s.length();</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (diff &gt; <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (diff == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">int</span> cnt = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">                <span class="keyword">if</span> (t.charAt(i) != s.charAt(i)) &#123;</div><div class="line">                    cnt++;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> (cnt == <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (diff == <span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">                <span class="keyword">if</span> (t.charAt(i) != s.charAt(i)) &#123;</div><div class="line">                    <span class="keyword">return</span> (s.substring(i).equals(t.substring(i + <span class="number">1</span>)));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-Read-Characters-From-File-multiple-calls"><a href="#3-Read-Characters-From-File-multiple-calls" class="headerlink" title="3. Read Characters From File - multiple calls"></a>3. Read Characters From File - multiple calls</h2><blockquote>
+<p>The API: <strong>int read4(char *buf)</strong> reads 4 characters at a time from a file.</p>
+<p>The return value is the actual number of characters read. For example, it returns 3 if there is only 3 characters left in the file.</p>
+<p>By using the <code>read4</code> API, implement the function <strong>int read(char *buf, int n)</strong> that reads n characters from the file.</p>
+<p><strong>Note:</strong><br>The read function will only be called once for each test case.</p>
+</blockquote>
+<p>This is a system operation <code>simulation</code> problem. It is similar to  reading data from disk. RAM is a buffer. The function <code>read4()</code> likes reading data from disk to RAM, which is slow. The function <code>read()</code> likes reading data from RAM.</p>
+<p>The buffer is built with a <code>Queue</code>. This buffer has the following characteristics.</p>
+<p><strong>1.</strong> <code>FIFO</code>, which promises the order of data<br><strong>2.</strong> When the buffer is <code>empty</code>, call <code>read4</code> to enqueue<br><strong>3.</strong> When the buffer is <code>not empty</code> and <code>read</code> is called, dequeue and put the elements into buffer.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> <span class="keyword">extends</span> <span class="title">Reader4</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> buf destination buffer</div><div class="line">     * <span class="doctag">@param</span> n maximum number of characters to read</div><div class="line">     * <span class="doctag">@return</span> the number of characters read</div><div class="line">     */</div><div class="line">    <span class="keyword">char</span>[] buffer = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">4</span>];</div><div class="line">    <span class="keyword">int</span> head = <span class="number">0</span>, tail = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">char</span>[] buf, <span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (i &lt; n) &#123;</div><div class="line">            <span class="keyword">if</span> (head == tail) &#123;               <span class="comment">// queue is empty</span></div><div class="line">                head = <span class="number">0</span>;</div><div class="line">                tail = read4(buffer);         <span class="comment">// enqueue</span></div><div class="line">                <span class="keyword">if</span> (tail == <span class="number">0</span>) &#123;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">while</span> (i &lt; n &amp;&amp; head &lt; tail) &#123;</div><div class="line">                buf[i++] = buffer[head++];    <span class="comment">// dequeue</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-Strings-Serialization"><a href="#4-Strings-Serialization" class="headerlink" title="4. Strings Serialization"></a>4. Strings Serialization</h2><blockquote>
+<p>Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.</p>
+<p>Please implement <code>encode</code> and <code>decode</code></p>
+<p><strong>Examples</strong><br>Given strs = [“lint”,”code”,”love”,”you”]<br>string encoded_string = encode(strs)</p>
+<p>return `[“lint”,”code”,”love”,”you”]｀ when you call decode(encoded_string)</p>
+<p><strong>Similar Problems</strong><br>LintCode 659, LeetCode 271</p>
+</blockquote>
+<p>In function <code>encode</code>, concatenate strings with the length of the following string. To seperate the length and the string, add <code>/</code> between them in order to prevent that string begins with a number and mixes with the length.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> strs a list of strings</div><div class="line">     * <span class="doctag">@return</span> encodes a list of strings to a single string.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">encode</span><span class="params">(List&lt;String&gt; strs)</span> </span>&#123;</div><div class="line">        String res = <span class="string">""</span>;</div><div class="line">        <span class="keyword">for</span> (String s : strs)</div><div class="line">        &#123;</div><div class="line">            res = res + s.length() + <span class="string">'/'</span> + s;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> str a string</div><div class="line">     * <span class="doctag">@return</span> dcodes a single string to a list of strings</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">decode</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">        List&lt;String&gt; res = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, n = str.length();</div><div class="line">        <span class="keyword">while</span> (i &lt; n)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">int</span> num = <span class="number">0</span>; </div><div class="line">            <span class="keyword">while</span> (str.charAt(i) != <span class="string">'/'</span>)</div><div class="line">            &#123;</div><div class="line">                num = num * <span class="number">10</span> + (str.charAt(i) - <span class="string">'0'</span>);</div><div class="line">                i++;</div><div class="line">            &#125;</div><div class="line">            i++;</div><div class="line">            <span class="keyword">if</span> (i + num == n) </div><div class="line">                res.add(str.substring(i));</div><div class="line">            <span class="keyword">else</span> </div><div class="line">                res.add(str.substring(i, i + num));</div><div class="line">            i = i + num;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5-System-Longest-File-Path"><a href="#5-System-Longest-File-Path" class="headerlink" title="5. System Longest File Path"></a>5. System Longest File Path</h2><blockquote>
+<p>Suppose we abstract our file system by a string in the following manner:<br>The string <code>&quot;dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext&quot;</code> represents:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">dir</div><div class="line">    subdir1</div><div class="line">    subdir2</div><div class="line">        file.ext</div></pre></td></tr></table></figure></p>
+<p>The directory <code>dir</code> contains an empty sub-directory <code>subdir1</code> and a sub-directory <code>subdir2</code> containing a file <code>file.ext</code>.<br>The string <code>&quot;dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext&quot;</code> represents:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">dir</div><div class="line">    subdir1</div><div class="line">        file1.ext</div><div class="line">        subsubdir1</div><div class="line">    subdir2</div><div class="line">        subsubdir2</div><div class="line">            file2.ext</div></pre></td></tr></table></figure></p>
+<p>The directory <code>dir</code> contains two sub-directories <code>subdir1</code> and <code>subdir2</code>. subdir1 contains a file <code>file1.ext</code> and an empty second-level sub-directory <code>subsubdir1</code>. subdir2 contains a second-level sub-directory <code>subsubdir2</code> containing a file <code>file2.ext</code>.<br>We are interested in finding the longest (number of characters) absolute path to a file within our file system. For example, in the second example above, the longest absolute path is <code>&quot;dir/subdir2/subsubdir2/file2.ext&quot;</code>, and its length is <code>32</code> (not including the double quotes).<br>Given a string representing the file system in the above format, return the length of the longest absolute path to file in the abstracted file system. If there is no file in the system, return <code>0</code>.</p>
+<p><strong>Notes</strong></p>
+<ul>
+<li>The name of a file contains at least a <code>.</code> and an <code>extension</code>.</li>
+<li>The name of a directory or sub-directory will not contain a <code>..</code></li>
+<li>Time complexity required: <code>O(n)</code> where n is the size of the input string.</li>
+<li>Notice that a/aa/aaa/file1.txt is not the longest file path, if there is another path aaaaaaaaaaaaaaaaaaaaa/sth.png.</li>
+</ul>
+<p><strong>Similar Problems</strong><br>LintCode 643, LeetCode 388</p>
+</blockquote>
+<p>This problem seems really complex, this input string make me confused at first. But it is easy to read and operate after using <code>split(&#39;\n&#39;)</code>.</p>
+<ol>
+<li>Use <code>split(&#39;/n&#39;)</code> to split the input string, after that the string can be operated line by line</li>
+<li>Count the number of <code>&#39;\t&#39;</code> to judge the level of current dir or file.</li>
+<li>Basic DFS problem.<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line">    * @param input an abstract file system</div><div class="line">    * @return return the length of the longest absolute path to file</div><div class="line">    */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthLongestPath</span><span class="params">(String input)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        <span class="keyword">if</span> (input.length() == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span>[] level_size = <span class="keyword">new</span> <span class="keyword">int</span>[input.length() + <span class="number">1</span>];</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (String line : input.split(<span class="string">"\n"</span>)) &#123;</div><div class="line">            <span class="keyword">int</span> level = line.lastIndexOf(<span class="string">'\t'</span>) + <span class="number">2</span>;</div><div class="line">            <span class="keyword">int</span> len = line.length() - (level - <span class="number">1</span>);</div><div class="line">            <span class="keyword">if</span> (line.contains(<span class="string">"."</span>)) &#123;</div><div class="line">                ans = Math.max(ans, level_size[level - <span class="number">1</span>] + len);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                level_size[level] = level_size[level - <span class="number">1</span>] + len + <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="6-Roman-to-Integer"><a href="#6-Roman-to-Integer" class="headerlink" title="6. Roman to Integer"></a>6. Roman to Integer</h2><blockquote>
+<p>Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.</p>
+<p><strong>Similar Problems</strong><br>LintCode 419, LeetCode 13</p>
+</blockquote>
+<p><strong>Roman numeral</strong><br>• 1~9: {“I”, “II”, “III”, “IV”, “V”, “VI”, “VII”, “VIII”, “IX”};<br>• 10~90: {“X”, “XX”, “XXX”, “XL”, “L”, “LX”, “LXX”, “LXXX”, “XC”};<br>• 100~900: {“C”, “CC”, “CCC”, “CD”, “D”, “DC”, “DCC”, “DCCC”, “CM”};<br>• 1000~3000: {“M”, “MM”, “MMM”}.</p>
+<p>The characteristics of Roman numeral must be extracted.</p>
+<ol>
+<li>At most times, just add all the numeral from left to right.</li>
+<li>only <code>4, 9, 40, 90...</code> need to consider subtraction. Other than these numbers, Roman numerals decrease from left to right.</li>
+<li>So if there is a Roman numeral smaller than its right one, then it should be subtracted.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> s Roman representation</div><div class="line">     * <span class="doctag">@return</span> an integer</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">romanToInt</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        <span class="keyword">int</span> ans;</div><div class="line">        <span class="keyword">char</span>[] sc = s.toCharArray();</div><div class="line">        ans = toInt(sc[<span class="number">0</span>]);                        <span class="comment">//0 special</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; s.length(); i++) &#123;</div><div class="line">            ans += toInt(sc[i]);</div><div class="line">            <span class="keyword">if</span> (toInt(sc[i - <span class="number">1</span>]) &lt; toInt(sc[i])) &#123;</div><div class="line">                ans -= toInt(sc[i - <span class="number">1</span>]) * <span class="number">2</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">toInt</span><span class="params">(<span class="keyword">char</span> s)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span>(s) &#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">'I'</span>:<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'V'</span>:<span class="keyword">return</span> <span class="number">5</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'X'</span>:<span class="keyword">return</span> <span class="number">10</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'L'</span>:<span class="keyword">return</span> <span class="number">50</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'C'</span>:<span class="keyword">return</span> <span class="number">100</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'D'</span>:<span class="keyword">return</span> <span class="number">500</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'M'</span>:<span class="keyword">return</span> <span class="number">1000</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="7-Integer-to-Roman"><a href="#7-Integer-to-Roman" class="headerlink" title="7. Integer to Roman"></a>7. Integer to Roman</h2><blockquote>
+<p>Given an integer, convert it to a roman numeral.<br>Input is guaranteed to be within the range from 1 to 3999.</p>
+<p><strong>Similar Problems</strong><br>LintCode 419, LeetCode 13</p>
+</blockquote>
+<p>Firstly build the dictionary, then seperate the digital and transfer it digit by digit.</p>
+<p>The normal solution of <code>digital seperation</code> is to use <code>%</code> and <code>/</code>. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> n The integer</div><div class="line">     * <span class="doctag">@return</span> Roman representation</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">intToRoman</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        String M[] = &#123;<span class="string">""</span>, <span class="string">"M"</span>, <span class="string">"MM"</span>, <span class="string">"MMM"</span>&#125;;</div><div class="line">        String C[] = &#123;<span class="string">""</span>, <span class="string">"C"</span>, <span class="string">"CC"</span>, <span class="string">"CCC"</span>, <span class="string">"CD"</span>, <span class="string">"D"</span>, <span class="string">"DC"</span>, <span class="string">"DCC"</span>, <span class="string">"DCCC"</span>, <span class="string">"CM"</span>&#125;;</div><div class="line">        String X[] = &#123;<span class="string">""</span>, <span class="string">"X"</span>, <span class="string">"XX"</span>, <span class="string">"XXX"</span>, <span class="string">"XL"</span>, <span class="string">"L"</span>, <span class="string">"LX"</span>, <span class="string">"LXX"</span>, <span class="string">"LXXX"</span>, <span class="string">"XC"</span>&#125;;</div><div class="line">        String I[] = &#123;<span class="string">""</span>, <span class="string">"I"</span>, <span class="string">"II"</span>, <span class="string">"III"</span>, <span class="string">"IV"</span>, <span class="string">"V"</span>, <span class="string">"VI"</span>, <span class="string">"VII"</span>, <span class="string">"VIII"</span>, <span class="string">"IX"</span>&#125;;</div><div class="line">        <span class="keyword">return</span> M[n / <span class="number">1000</span>] + C[(n / <span class="number">100</span>) % <span class="number">10</span>] + X[(n / <span class="number">10</span>) % <span class="number">10</span>] + I[n % <span class="number">10</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="8-Identify-Celebrity"><a href="#8-Identify-Celebrity" class="headerlink" title="8. Identify Celebrity"></a>8. Identify Celebrity</h2><blockquote>
+<p>Suppose you are at a party with <code>n</code> people (labeled from <code>0</code> to <code>n - 1</code>) and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know him/her but he/she does not know any of them.</p>
+<p>Now you want to find out who the celebrity is or verify that there is not one. The only thing you are allowed to do is to ask questions like: “Hi, A. Do you know B?” to get information of whether A knows B. You need to find out the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense).</p>
+<p>You are given a helper function <code>bool knows(a, b)</code> which tells you whether A knows B. Implement a function <code>int findCelebrity(n)</code>, your function should minimize the number of calls to knows.</p>
+<p><strong>Similar Problems</strong><br>LintCode 645, LeetCode 277</p>
+</blockquote>
+<h3 id="Solution-1-Brute-Force"><a href="#Solution-1-Brute-Force" class="headerlink" title="Solution 1: Brute Force"></a>Solution 1: Brute Force</h3><p>Using <code>knows(a, b)</code> for each people with each people. The time complexity is O(n^2).</p>
+<h3 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2"></a>Solution 2</h3><p>Every time <code>knows(a, b)</code> is called, one people is out. if <code>true</code> then <code>a</code> is not celebrity, else <code>b</code> is not celebrity. At the end, use another iteration to test the whether the last person is celebrity or there is no one.<br>The time complexity is O(n).<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> <span class="keyword">extends</span> <span class="title">Relation</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> n a party with n people</div><div class="line">     * <span class="doctag">@return</span> the celebrity's label or -1</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findCelebrity</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        <span class="keyword">int</span> candidate = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (knows(candidate, i)) &#123;</div><div class="line">                candidate = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; candidate; i++) &#123;</div><div class="line">            <span class="keyword">if</span>(knows(candidate, i) || !knows(i, candidate)) &#123;</div><div class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = candidate + <span class="number">1</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span>(!knows(i, candidate)) &#123;</div><div class="line">                <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> candidate;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          
+            <a href="/tags/simulation/" rel="tag"># simulation</a>
+          
+            <a href="/tags/string/" rel="tag"># string</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/22/Convert-Sorted-List-to-Binary-Search-Tree/" rel="next" title="Convert Sorted List to Binary Search Tree">
+                <i class="fa fa-chevron-left"></i> Convert Sorted List to Binary Search Tree
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Hans Wu" />
+          <p class="site-author-name" itemprop="name">Hans Wu</p>
+           
+              <p class="site-description motion-element" itemprop="description">Hans’ Tech Blog</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HansWuHan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Sliding-Window-Average-from-Data-Stream"><span class="nav-text">1. Sliding Window Average from Data Stream</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1-Prefix-Sum-I"><span class="nav-text">Solution 1. Prefix Sum I</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-2-Prefix-Sum-II-Rolling-Array"><span class="nav-text">Solution 2. Prefix Sum II : Rolling Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-3-Queue-Linkedlist"><span class="nav-text">Solution 3. Queue / Linkedlist</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Edit-Distance-II"><span class="nav-text">2. Edit Distance II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Read-Characters-From-File-multiple-calls"><span class="nav-text">3. Read Characters From File - multiple calls</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Strings-Serialization"><span class="nav-text">4. Strings Serialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-System-Longest-File-Path"><span class="nav-text">5. System Longest File Path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Roman-to-Integer"><span class="nav-text">6. Roman to Integer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Integer-to-Roman"><span class="nav-text">7. Integer to Roman</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Identify-Celebrity"><span class="nav-text">8. Identify Celebrity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1-Brute-Force"><span class="nav-text">Solution 1: Brute Force</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-2"><span class="nav-text">Solution 2</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hans Wu</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://cncoder.pub/2017/07/23/simulation-algorithms-string-manipulation-skills/';
+          this.page.identifier = '2017/07/23/simulation-algorithms-string-manipulation-skills/';
+          this.page.title = 'Simulation Algorithms && String Manipulation Skills';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("OaaS4YjMVN8xycjuPiEXWyCm-gzGzoHsz", "CHpO20MLxEQoE0Yjet1eyjDV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
