@@ -1,0 +1,1445 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="dlWVJMO5yG7ECkN9oseIUo7lWoXjMlzqwT7u9kqrvUA" />
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="ytVc7opvAj" />
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="algorithm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="This article concludes 8 problems in 2 topics.  Interval Manipulation Character/String Counting with Hash   1. Missing Interval Given a sorted integer array where the range of elements are in the incl">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Interval Manipulation &amp;&amp; Characters Counting Problems">
+<meta property="og:url" content="http://cncoder.pub/2017/07/31/Interval-Manipulation-Characters-Counting-Problems/index.html">
+<meta property="og:site_name" content="CN_Coder">
+<meta property="og:description" content="This article concludes 8 problems in 2 topics.  Interval Manipulation Character/String Counting with Hash   1. Missing Interval Given a sorted integer array where the range of elements are in the incl">
+<meta property="og:updated_time" content="2017-07-31T14:58:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Interval Manipulation &amp;&amp; Characters Counting Problems">
+<meta name="twitter:description" content="This article concludes 8 problems in 2 topics.  Interval Manipulation Character/String Counting with Hash   1. Missing Interval Given a sorted integer array where the range of elements are in the incl">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://cncoder.pub/2017/07/31/Interval-Manipulation-Characters-Counting-Problems/"/>
+
+
+
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+  <title>Interval Manipulation && Characters Counting Problems | CN_Coder</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99213361-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CN_Coder</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://cncoder.pub/2017/07/31/Interval-Manipulation-Characters-Counting-Problems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hans Wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CN_Coder">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Interval Manipulation && Characters Counting Problems</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-31T22:55:15+08:00">
+                2017-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/31/Interval-Manipulation-Characters-Counting-Problems/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/07/31/Interval-Manipulation-Characters-Counting-Problems/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/07/31/Interval-Manipulation-Characters-Counting-Problems/" class="leancloud_visitors" data-flag-title="Interval Manipulation && Characters Counting Problems">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>This article concludes 8 problems in 2 topics.</p>
+<ol>
+<li>Interval Manipulation</li>
+<li>Character/String Counting with Hash </li>
+</ol>
+<h2 id="1-Missing-Interval"><a href="#1-Missing-Interval" class="headerlink" title="1. Missing Interval"></a>1. Missing Interval</h2><blockquote>
+<p>Given a sorted integer array where the range of elements are in the inclusive range [lower, upper], return its missing ranges.</p>
+<p><strong>Example</strong><br>Given nums = [0, 1, 3, 50, 75], lower = 0 and upper = 99<br>return [“2”, “4-&gt;49”, “51-&gt;74”, “76-&gt;99”].</p>
+<p><strong>Similar Problems</strong><br>LintCode 30, LeetCode 163</p>
+</blockquote>
+<p>This is a simple simulation. </p>
+<ol>
+<li>Deal with the intervals at <code>head</code> and <code>tail</code> separatedly, and deal with the intervals in the middle iteratively.</li>
+<li>Pay attention to <code>Integer.MAX_VALUE</code> and <code>Integer.MIN_VALUE</code>, transfer the number to <code>long</code> or deal with these 2 situations separatedly.</li>
+<li>Use function to make a clear code style.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> nums  a sorted integer array</div><div class="line">     * <span class="doctag">@param</span> lower an integer</div><div class="line">     * <span class="doctag">@param</span> upper an integer</div><div class="line">     * <span class="doctag">@return</span> a list of its missing ranges</div><div class="line">     */</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">findMissingRanges</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) &#123;</div><div class="line">            addRange(ans, lower, upper);</div><div class="line">            <span class="keyword">return</span> ans;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        addRange(ans, lower, (<span class="keyword">long</span>) nums[<span class="number">0</span>] - <span class="number">1</span>);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</div><div class="line">            addRange(ans, (<span class="keyword">long</span>) nums[i - <span class="number">1</span>] + <span class="number">1</span>, (<span class="keyword">long</span>) nums[i] - <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        addRange(ans, (<span class="keyword">long</span>) nums[nums.length - <span class="number">1</span>] + <span class="number">1</span>, upper);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addRange</span><span class="params">(List&lt;String&gt; ans, <span class="keyword">long</span> st, <span class="keyword">long</span> ed)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (st &gt; ed) &#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (st == ed) &#123;</div><div class="line">            ans.add(st + <span class="string">""</span>);</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> ans.add(st + <span class="string">"-&gt;"</span> + ed);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-Merge-Intervals"><a href="#2-Merge-Intervals" class="headerlink" title="2. Merge Intervals"></a>2. Merge Intervals</h2><blockquote>
+<p>Given a collection of intervals, merge all overlapping intervals.</p>
+<p><strong>Example</strong><br>[                     [<br>  [1, 3],               [1, 6],<br>  [2, 6],      =&gt;       [8, 10],<br>  [8, 10],              [15, 18]<br>  [15, 18]            ]<br>]</p>
+<p><strong>Similar Problems</strong><br>LintCode 156, LeetCode 56</p>
+</blockquote>
+<p>Easy and simple, sort the intervals by start point, ascending order, then merge the intervals from left to right one-by-one if possible. The time complexity is O(nlogn), which caused by sort.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> intervals, a collection of intervals</div><div class="line">     * <span class="doctag">@return</span>: A new sorted interval list.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Interval&gt; <span class="title">merge</span><span class="params">(List&lt;Interval&gt; intervals)</span> </span>&#123;</div><div class="line">        <span class="comment">// write your code here</span></div><div class="line">        List&lt;Interval&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        </div><div class="line">        Collections.sort(intervals, <span class="keyword">new</span> Comparator&lt;Interval&gt;() &#123;</div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Interval obj0, Interval obj1)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> obj0.start - obj1.start;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        Interval last = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">for</span> (Interval item : intervals) &#123;</div><div class="line">            <span class="keyword">if</span> (last == <span class="keyword">null</span> || last.end &lt; item.start) &#123;</div><div class="line">                ans.add(item);</div><div class="line">                last = item;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                last.end = Math.max(last.end, item.end); <span class="comment">// Modify the element already in list</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-Insert-interval"><a href="#3-Insert-interval" class="headerlink" title="3. Insert interval"></a>3. Insert interval</h2><blockquote>
+<p>Given a non-overlapping interval list which is sorted by start point.</p>
+<p>Insert a new interval into it, make sure the list is still in order and non-overlapping (merge intervals if necessary).</p>
+<p><strong>Example</strong><br>Insert [2, 5] into [[1,2], [5,9]], we get [[1,9]].</p>
+</blockquote>
+<p>Insert [3, 4] into [[1,2], [5,9]], we get [[1,2], [3,4], [5,9]].</p>
+<blockquote>
+<p><strong>Similar Problems</strong><br>LintCode 30, LeetCode 57</p>
+</blockquote>
+<p>Insert the interval first, then deal with it as <code>Merge Interval</code>.</p>
+<p>The other way is to <code>classify</code> the intervals in 3 kinds: smaller than the new one, need to be merged with new one, and larger than the new one.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> ArrayList&lt;Interval&gt; <span class="title">insert</span><span class="params">(ArrayList&lt;Interval&gt; intervals, Interval newInterval)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (newInterval == <span class="keyword">null</span> || intervals == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> intervals;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ArrayList&lt;Interval&gt; results = <span class="keyword">new</span> ArrayList&lt;Interval&gt;();</div><div class="line">        <span class="keyword">int</span> insertPos = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (Interval interval : intervals) &#123;</div><div class="line">            <span class="keyword">if</span> (interval.end &lt; newInterval.start) &#123;</div><div class="line">                results.add(interval);</div><div class="line">                insertPos++;</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (interval.start &gt; newInterval.end) &#123;</div><div class="line">                results.add(interval);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                newInterval.start = Math.min(interval.start, newInterval.start);</div><div class="line">                newInterval.end = Math.max(interval.end, newInterval.end);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        results.add(insertPos, newInterval);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> results;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-First-Position-Unique-Character"><a href="#4-First-Position-Unique-Character" class="headerlink" title="4. First Position Unique Character"></a>4. First Position Unique Character</h2><blockquote>
+<p>Given a string, find the first non-repeating character in it and return it’s index. If it doesn’t exist, return <code>-1</code>.</p>
+<p><strong>Example</strong><br>Given s = <code>&quot;lintcode&quot;</code>, return <code>0</code>.<br>Given s = <code>&quot;lovelintcode&quot;</code>, return <code>2</code>.</p>
+<p><strong>Similar Problems</strong><br>LintCode 646, LeetCode 387</p>
+</blockquote>
+<p>Note that if building a <code>character</code> hash table, it is more efficent to use <code>int[256]</code> rather than HashTable, according to <code>ASCII</code> contains 256 characters. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> s a string</div><div class="line">     * <span class="doctag">@return</span> it's index</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstUniqChar</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        <span class="keyword">int</span>[] cnt = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : s.toCharArray()) &#123;</div><div class="line">            cnt[c]++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</div><div class="line">            <span class="keyword">if</span> (cnt[s.charAt(i)] == <span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">return</span> i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5-Substring-Anagrams"><a href="#5-Substring-Anagrams" class="headerlink" title="5. Substring Anagrams"></a>5. Substring Anagrams</h2><blockquote>
+<p>Given a string <code>s</code> and a non-empty string <code>p</code>, find all the start indices of p’s anagrams in <code>s</code>.</p>
+<p>Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 40,000.</p>
+<p>The order of output does not matter.</p>
+<p><strong>Example</strong><br>The substring with start index = 0 is “cba”, which is an anagram of “abc”.<br>The substring with start index = 6 is “bac”, which is an anagram of “abc”.</p>
+<p><strong>Similar Problems</strong><br>LintCode 647, LeetCode 438</p>
+</blockquote>
+<p>If two strings contains same numbers of same characters, ignore order, these two strings are the anagram of each other.</p>
+<p>The brute force solution is find all the substrings of <code>s</code> which length is <code>s.length()</code> and check whether they are anagrams of <code>p</code>. The time complexity is <code>O(mn)</code> where m,n is the length of s, p. Brute force solution will cause TLE.</p>
+<p>Realizing that the neighboring substring has only 1-character-difference.<br>It is possible to hold an <code>int[256]</code> to count the <code>difference</code> of current substring and p, and update it by add a new character on the right and delete the left old character. The time complexity is O(n).</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">findAnagrams</span><span class="params">(String s, String p)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">if</span> (s.length() &lt; p.length()) &#123;</div><div class="line">            <span class="keyword">return</span> ans;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">char</span>[] sc = s.toCharArray();</div><div class="line">        <span class="keyword">char</span>[] pc = p.toCharArray();</div><div class="line"></div><div class="line">        <span class="keyword">int</span>[] det = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">256</span>];</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; p.length(); i++) &#123;</div><div class="line">            det[pc[i]]--;</div><div class="line">            det[sc[i]]++;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> absSum = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> item : det) &#123;</div><div class="line">            absSum += Math.abs(item);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (absSum == <span class="number">0</span>) &#123;</div><div class="line">            ans.add(<span class="number">0</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = p.length(); i &lt; s.length(); i++) &#123;</div><div class="line">            <span class="keyword">int</span> r = sc[i];</div><div class="line">            <span class="keyword">int</span> l = sc[i - p.length()];</div><div class="line">            absSum = absSum - Math.abs(det[r]) - Math.abs(det[l]);</div><div class="line"></div><div class="line">            det[r]++;</div><div class="line">            det[l]--;</div><div class="line"></div><div class="line">            absSum = absSum + Math.abs(det[r]) + Math.abs(det[l]);</div><div class="line">            <span class="keyword">if</span> (absSum == <span class="number">0</span>) &#123;</div><div class="line">                ans.add(i - p.length() + <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="6-Word-Abbreviation-Set"><a href="#6-Word-Abbreviation-Set" class="headerlink" title="6. Word Abbreviation Set"></a>6. Word Abbreviation Set</h2><blockquote>
+<p>An abbreviation of a word follows the form . Below are some examples of word abbreviations:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">a) it                --&gt; it    (no abbreviation)</div><div class="line"></div><div class="line">     1</div><div class="line">b) d|o|g                   --&gt; d1g</div><div class="line"></div><div class="line">              1    1  1</div><div class="line">     1---5----0----5--8</div><div class="line">c) i|nternationalizatio|n  --&gt; i18n</div><div class="line"></div><div class="line">              1</div><div class="line">     1---5----0</div><div class="line">d) l|ocalizatio|n          --&gt; l10n</div></pre></td></tr></table></figure></p>
+<p>Assume you have a dictionary and given a word, find whether its abbreviation is unique in the dictionary. A word’s abbreviation is unique if no other word from the dictionary has the same abbreviation.</p>
+<p><strong>Example</strong><br>Given dictionary = <code>[ &quot;deer&quot;, &quot;door&quot;, &quot;cake&quot;, &quot;card&quot; ]</code><br>isUnique(“dear”) // return false<br>isUnique(“cart”) // return true<br>isUnique(“cane”) // return false<br>isUnique(“make”) // return true</p>
+<p><strong>Similar Problems</strong><br>LintCode 648, LeetCode 288</p>
+</blockquote>
+<p>Although this problem does not require complex algorithms, it still need some work to extact the solution.</p>
+<h3 id="Solution-1-count-the-times-words-and-abbrs-appear-and-find-rules"><a href="#Solution-1-count-the-times-words-and-abbrs-appear-and-find-rules" class="headerlink" title="Solution 1: count the times words and abbrs appear and find rules"></a>Solution 1: count the times words and abbrs appear and find rules</h3><blockquote>
+<p>the times the word appears in the dicationary == the times the word abbreviation appears in the abbr dictionary ===&gt; Unique<br> else ===&gt; Not Unique</p>
+</blockquote>
+<p>Use 2 <code>maps</code> to keep the word dictionary and abbr dictionary and every word and abbr appearing times. </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidWordAbbr</span> </span>&#123;</div><div class="line">    Map&lt;String, Integer&gt; dict = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">    Map&lt;String, Integer&gt; abbr = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="comment">// @param dictionary a list of word</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ValidWordAbbr</span><span class="params">(String[] dictionary)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        <span class="keyword">for</span> (String d : dictionary) &#123;</div><div class="line">            <span class="keyword">if</span> (!dict.containsKey(d)) &#123;</div><div class="line">                dict.put(d, <span class="number">1</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                dict.put(d, dict.get(d) + <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            String a = getAbbr(d);</div><div class="line">            <span class="keyword">if</span> (!abbr.containsKey(a)) &#123;</div><div class="line">                abbr.put(a, <span class="number">1</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                abbr.put(a, abbr.get(a) + <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> word a string</div><div class="line">     * <span class="doctag">@return</span> true if its abbreviation is unique or false</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isUnique</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        String a = getAbbr(word);</div><div class="line">        <span class="keyword">return</span> dict.get(word) == abbr.get(a);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function">String <span class="title">getAbbr</span><span class="params">(String str)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (str.length() &lt;= <span class="number">2</span>) &#123;</div><div class="line">            <span class="keyword">return</span> str;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="string">""</span> + str.charAt(<span class="number">0</span>) + (str.length() - <span class="number">2</span>) + str.charAt(str.length() - <span class="number">1</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="Solution-2-abbr-keep-its-original-words"><a href="#Solution-2-abbr-keep-its-original-words" class="headerlink" title="Solution 2: abbr keep its original words"></a>Solution 2: abbr keep its original words</h3><p>Use 1 map <code>Map&lt;String, Set&lt;String&gt;&gt;</code>, store original words in the set every abbr maps to, so that when finding a word is unique, check the set.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValidWordAbbr</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Map&lt;String,Set&lt;String&gt;&gt; d;</div><div class="line"></div><div class="line">    <span class="comment">// @param dictionary a list of word</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ValidWordAbbr</span><span class="params">(String[] dictionary)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        d = <span class="keyword">new</span> HashMap&lt;String, Set&lt;String&gt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; dictionary.length; i++) &#123;</div><div class="line">            String w = dictionary[i];</div><div class="line">            String abbr = getAbbr(w); </div><div class="line">        </div><div class="line">            <span class="keyword">if</span> (d.containsKey(abbr)) &#123;</div><div class="line">                Set&lt;String&gt; s = d.get(abbr);</div><div class="line">                <span class="keyword">if</span> (!s.contains(w)) s.add(w);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                Set&lt;String&gt; s = <span class="keyword">new</span> HashSet&lt;String&gt;();</div><div class="line">                s.add(w);</div><div class="line">                d.put(abbr,s);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> word a string</div><div class="line">     * <span class="doctag">@return</span> true if its abbreviation is unique or false</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isUnique</span><span class="params">(String word)</span> </span>&#123;</div><div class="line">        <span class="comment">// Write your code here</span></div><div class="line">        String a = getAbbr(word);</div><div class="line">        <span class="keyword">if</span> (d.containsKey(a)) &#123;</div><div class="line">            Set&lt;String&gt; s = d.get(a);</div><div class="line">            <span class="keyword">if</span> (s.size() == <span class="number">1</span> &amp;&amp; s.contains(word)) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getAbbr</span><span class="params">(String w)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> len = w.length() - <span class="number">2</span>;</div><div class="line">        <span class="keyword">if</span> (len &lt;= <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> w;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="string">""</span> + w.charAt(<span class="number">0</span>) + len + w.charAt(w.length() - <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="7-Longest-Consecutive-Sequence"><a href="#7-Longest-Consecutive-Sequence" class="headerlink" title="7. Longest Consecutive Sequence"></a>7. Longest Consecutive Sequence</h2><blockquote>
+<p>Given an unsorted array of integers, find the length of the longest consecutive elements sequence.</p>
+<p><strong>Example</strong><br>Given <code>[100, 4, 200, 1, 3, 2]</code>,<br>The longest consecutive elements sequence is <code>[1, 2, 3, 4]</code>. Return its length: <code>4</code>.</p>
+<p><strong>Similar Problems</strong><br>LintCode 124, LeetCode 128</p>
+</blockquote>
+<p>Brute force solution is to sort the array, and find the consectutive sequence from left to right, which time complexity is O(nlogn). </p>
+<p>There is an O(n) solution. Every consecutive sequence is like a <code>collection</code>. if one element belongs to this collection, then any other collection must not contain it. Keep a <code>set</code> to record the elements, while one element is visited, remove it. Because every element is visited for one time. The time complexity is O(n).</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> nums: A list of integers</div><div class="line">     * <span class="doctag">@return</span> an integer</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestConsecutive</span><span class="params">(<span class="keyword">int</span>[] num)</span> </span>&#123;</div><div class="line">        <span class="comment">// write you code here</span></div><div class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> item : num) &#123;</div><div class="line">            set.add(item);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> item : num) &#123;</div><div class="line">            <span class="keyword">if</span> (set.contains(item)) &#123;</div><div class="line">                set.remove(item);</div><div class="line"></div><div class="line">                <span class="keyword">int</span> pre = item - <span class="number">1</span>;</div><div class="line">                <span class="keyword">int</span> next = item + <span class="number">1</span>;</div><div class="line">                <span class="keyword">while</span> (set.contains(pre)) &#123;</div><div class="line">                    set.remove(pre);</div><div class="line">                    pre--;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">while</span> (set.contains(next)) &#123;</div><div class="line">                    set.remove(next);</div><div class="line">                    next++;</div><div class="line">                &#125;</div><div class="line">                ans = Math.max(ans, next - pre - <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="8-Longest-Increasing-Subsequence"><a href="#8-Longest-Increasing-Subsequence" class="headerlink" title="8. Longest Increasing Subsequence"></a>8. Longest Increasing Subsequence</h2><blockquote>
+<p>Given a sequence of integers, find the longest increasing subsequence (LIS).<br>You code should return the <code>length</code> of the LIS.</p>
+<p><strong>Example</strong><br>For <code>[5, 4, 1, 2, 3]</code>, the LIS is <code>[1, 2, 3]</code>, return <code>3</code><br>For <code>[4, 2, 4, 5, 3, 7]</code>, the LIS is <code>[2, 4, 5, 7]</code>, return <code>4</code></p>
+<p><strong>Similar Problems</strong><br>LintCode 76, LeetCode 300</p>
+</blockquote>
+<h3 id="Solution-1：-Dynamic-Processing"><a href="#Solution-1：-Dynamic-Processing" class="headerlink" title="Solution 1： Dynamic Processing"></a>Solution 1： Dynamic Processing</h3><p><code>dp[i]</code> is the longest increasing subsequence that end with the ith element.<br>State transition equation : <code>dp[i] = max(dp[k]) + 1</code>.<br>dp[k] meets : <code>0 &lt;= k &lt; i</code> &amp;&amp; <code>nums[k] &lt; nums[i]</code></p>
+<p>The time compexity is O(n^2).</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestIncreasingSubsequence</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(nums.length == <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span>[] lis = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</div><div class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</div><div class="line">            <span class="keyword">int</span> localMax = <span class="number">0</span>;</div><div class="line">            <span class="comment">// find the longest increasing subsequence that end with ith element</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++)&#123;</div><div class="line">                <span class="keyword">if</span> (lis[j] &gt; localMax &amp;&amp; nums[j] &lt;= nums[i])&#123;</div><div class="line">                    localMax = lis[j];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            lis[i] = localMax + <span class="number">1</span>;</div><div class="line">            max = Math.max(max, lis[i]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Solution-2-Keep-every-possible-sequence"><a href="#Solution-2-Keep-every-possible-sequence" class="headerlink" title="Solution 2: Keep every possible sequence"></a>Solution 2: Keep every possible sequence</h3><p>Take <code>[1,3,5,2,8,4,6....]</code> as example. When <code>6</code> is visited, there are 4 </p>
+<ol>
+<li>Different length</li>
+<li>The end of the sequence is the minimum one in sequences with same length<br>sequences.</li>
+</ol>
+<blockquote>
+<p>1<br>1,2<br>1,3,4<br>1,3,5,6</p>
+</blockquote>
+<p>These sequences may be LIS. When a new number <code>nums[i]</code> is coming, update these sequences with following rules.</p>
+<ol>
+<li>If <code>nums[i]</code> is <code>larger</code> than all these sequences tails, a new sequence with larger length should be added. Copy the longest sequence and add nums[i] as the new sequence.</li>
+<li>If <code>nums[i]</code> is <code>smaller</code> than all these sequeces tails, update the sequence with length <code>1</code> </li>
+<li>Else update the sequence’s tail whose tail <code>just larger</code> than nums[i]. Find this sequence by <code>Binary Search</code> </li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestIncreasingSubsequence</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="comment">// write your code here</span></div><div class="line">        <span class="keyword">if</span>(nums.length == <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span>[] tails = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length];</div><div class="line">        tails[<span class="number">0</span>] = nums[<span class="number">0</span>];</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++)&#123;</div><div class="line">            <span class="keyword">if</span>(nums[i] &lt; tails[<span class="number">0</span>])&#123;</div><div class="line">                tails[<span class="number">0</span>] = nums[i];</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] &gt; tails[len])&#123;</div><div class="line">                tails[++len] = nums[i];</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                tails[binarySearch(tails, <span class="number">0</span>, len, nums[i])] = nums[i];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> len + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(<span class="keyword">int</span>[] tails, <span class="keyword">int</span> min, <span class="keyword">int</span> max, <span class="keyword">int</span> target)</span></span>&#123;</div><div class="line">        <span class="keyword">while</span>(min &lt;= max)&#123;</div><div class="line">            <span class="keyword">int</span> mid = min + (max - min) / <span class="number">2</span>;</div><div class="line">            <span class="keyword">if</span>(tails[mid] == target)&#123;</div><div class="line">                <span class="keyword">return</span> mid;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(tails[mid] &lt; target)&#123;</div><div class="line">                min = mid + <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(tails[mid] &gt; target)&#123;</div><div class="line">                max = mid - <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> min;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>Thanks for supporting me :)</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechatpayment.png" alt="Hans Wu WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/23/simulation-algorithms-string-manipulation-skills/" rel="next" title="Simulation Algorithms && String Manipulation Skills">
+                <i class="fa fa-chevron-left"></i> Simulation Algorithms && String Manipulation Skills
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Hans Wu" />
+          <p class="site-author-name" itemprop="name">Hans Wu</p>
+           
+              <p class="site-description motion-element" itemprop="description">Hans’ Tech Blog</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/HansWuHan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Missing-Interval"><span class="nav-text">1. Missing Interval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Merge-Intervals"><span class="nav-text">2. Merge Intervals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Insert-interval"><span class="nav-text">3. Insert interval</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-First-Position-Unique-Character"><span class="nav-text">4. First Position Unique Character</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Substring-Anagrams"><span class="nav-text">5. Substring Anagrams</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Word-Abbreviation-Set"><span class="nav-text">6. Word Abbreviation Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1-count-the-times-words-and-abbrs-appear-and-find-rules"><span class="nav-text">Solution 1: count the times words and abbrs appear and find rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-2-abbr-keep-its-original-words"><span class="nav-text">Solution 2: abbr keep its original words</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Longest-Consecutive-Sequence"><span class="nav-text">7. Longest Consecutive Sequence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Longest-Increasing-Subsequence"><span class="nav-text">8. Longest Increasing Subsequence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1：-Dynamic-Processing"><span class="nav-text">Solution 1： Dynamic Processing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-2-Keep-every-possible-sequence"><span class="nav-text">Solution 2: Keep every possible sequence</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hans Wu</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://cncoder.pub/2017/07/31/Interval-Manipulation-Characters-Counting-Problems/';
+          this.page.identifier = '2017/07/31/Interval-Manipulation-Characters-Counting-Problems/';
+          this.page.title = 'Interval Manipulation && Characters Counting Problems';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("OaaS4YjMVN8xycjuPiEXWyCm-gzGzoHsz", "CHpO20MLxEQoE0Yjet1eyjDV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
