@@ -4,12 +4,36 @@
 
     
   <url>
+    <loc>http://cncoder.pub/2017/11/19/KMP-String-matching-Algorithm/</loc>
+    <lastmod>2017-11-20T04:41:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>KMP String matching Algorithm</title>
+        <pubTime>2017-11-20T03:46:17.000Z</pubTime>
+        
+        <tag>KMP</tag>
+         
+        <tag>string</tag>
+         
+        <tag>shortest repeating substring</tag>
+         
+         
+           
+             
+              <breadCrumb title="Algorithm" url="http://cncoder.pub/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://cncoder.pub/2017/07/31/Interval-Manipulation-Characters-Counting-Problems/</loc>
     <lastmod>2017-07-31T14:58:07.000Z</lastmod>
     <data>
         <display>
         <title>Interval Manipulation && Characters Counting Problems</title>
-        <pubTime>2017-07-31T14:55:15.000Z</pubTime>
+        <pubTime>2017-08-01T05:55:15.000Z</pubTime>
         
         <tag>algorithm</tag>
          
@@ -30,15 +54,15 @@
     <data>
         <display>
         <title>Simulation Algorithms && String Manipulation Skills</title>
-        <pubTime>2017-07-22T16:08:51.000Z</pubTime>
+        <pubTime>2017-07-23T07:08:51.000Z</pubTime>
         
-        <tag>algorithm</tag>
-         
         <tag>leetcode</tag>
          
-        <tag>simulation</tag>
+        <tag>algorithm</tag>
          
         <tag>string</tag>
+         
+        <tag>simulation</tag>
          
          
            
@@ -56,11 +80,11 @@
     <data>
         <display>
         <title>Convert Sorted List to Binary Search Tree</title>
-        <pubTime>2017-06-22T14:03:53.000Z</pubTime>
+        <pubTime>2017-06-23T05:03:53.000Z</pubTime>
         
-        <tag>algorithm</tag>
-         
         <tag>leetcode</tag>
+         
+        <tag>algorithm</tag>
          
         <tag>tree</tag>
          
@@ -82,11 +106,11 @@
     <data>
         <display>
         <title>Trie</title>
-        <pubTime>2017-06-05T16:32:30.000Z</pubTime>
+        <pubTime>2017-06-06T07:32:30.000Z</pubTime>
         
-        <tag>algorithm</tag>
-         
         <tag>leetcode</tag>
+         
+        <tag>algorithm</tag>
          
         <tag>tree</tag>
          
@@ -106,11 +130,11 @@
     <data>
         <display>
         <title>Maximum Gap</title>
-        <pubTime>2017-05-29T02:17:33.000Z</pubTime>
+        <pubTime>2017-05-29T17:17:33.000Z</pubTime>
         
-        <tag>algorithm</tag>
-         
         <tag>leetcode</tag>
+         
+        <tag>algorithm</tag>
          
         <tag>sort</tag>
          
@@ -130,11 +154,11 @@
     <data>
         <display>
         <title>Dutch National Flag</title>
-        <pubTime>2017-05-24T03:06:27.000Z</pubTime>
+        <pubTime>2017-05-24T18:06:27.000Z</pubTime>
         
-        <tag>algorithm</tag>
-         
         <tag>leetcode</tag>
+         
+        <tag>algorithm</tag>
          
         <tag>sort</tag>
          
@@ -155,7 +179,7 @@
     <data>
         <display>
         <title>New Blog, New Life</title>
-        <pubTime>2017-05-15T12:37:42.000Z</pubTime>
+        <pubTime>2017-05-16T03:37:42.000Z</pubTime>
         
         <tag>Life</tag>
          
@@ -175,7 +199,7 @@
     <data>
         <display>
         <title>Princeton Algorithm I: Elementary Symbol Tables</title>
-        <pubTime>2017-05-18T16:37:28.000Z</pubTime>
+        <pubTime>2017-05-19T07:37:28.000Z</pubTime>
         
         <tag>algorithm</tag>
          
@@ -189,34 +213,6 @@
            
              
               <breadCrumb title="Princeton Algorithm I" url="http://cncoder.pub/categories/Princeton-Algorithm-I/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://cncoder.pub/2017/05/20/Angular-2-and-NodeJS-the-practical-guide-Introduction/</loc>
-    <lastmod>2017-05-19T16:50:43.000Z</lastmod>
-    <data>
-        <display>
-        <title>Angular 2 and NodeJS, the practical guide: Introduction</title>
-        <pubTime>2017-05-19T16:47:05.000Z</pubTime>
-        
-        <tag>front end</tag>
-         
-        <tag>Angular 2</tag>
-         
-        <tag>NodeJS</tag>
-         
-        <tag>Udemy</tag>
-         
-        <tag>full stack</tag>
-         
-         
-           
-             
-              <breadCrumb title="Full Stack" url="http://cncoder.pub/categories/Full-Stack/"/>
           
         </display>
     </data>
